@@ -30,8 +30,15 @@ public class PhanSo{
     public int getMS(){
         return this.mauso;
     }
+    public int ucln1(int a, int b){
+        if(b == 0) return a;
+        return ucln1(b, a % b);
+    }
 
     public void hienThi(){
+        int uc = ucln1(this.tuso, this.mauso);
+        this.tuso = this.tuso/uc;
+        this.mauso = this.mauso/uc;
         if(this.tuso == 0){
             System.out.println(0);
         }else if(this.mauso == 1){

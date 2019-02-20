@@ -21,6 +21,8 @@ public class b2c3{
         PhanSo a = new PhanSo();
         arr_ps = nhapNPhanSo();
         PhanSo sum_ps = arr_ps[0];
+
+        System.out.println("==============Result==============");
         for(int i = 0; i < arr_ps.length; i++){
             arr_ps[i].hienThi();
         }
@@ -61,4 +63,6 @@ public class b2c3{
         }
         return arr_ps;
     }
+
+    
 }
