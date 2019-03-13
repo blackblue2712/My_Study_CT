@@ -9,8 +9,8 @@ public class DoanThang
     }
 
     public DoanThang (Diem a, Diem b) {
-        d1 = a;
-        d2 = b;
+        d1 = new Diem(a.giaTriX(), a.giaTriY());
+        d2 = new Diem(b.giaTriX(), b.giaTriY());
     }
 
     public DoanThang (int ax, int ay, int bx, int by) {

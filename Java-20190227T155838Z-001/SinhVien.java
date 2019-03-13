@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.InputMismatchException;
-import java.util.Date;
+// // import java.util.Date;
+// // import java.util.*;
+// import java.text.DateFormat;
+// import java.text.SimpleDateFormat;
 
 public class SinhVien 
 {
@@ -53,9 +56,9 @@ public class SinhVien
 
     public void nhapThongTin () {
         Scanner kb = new Scanner (System.in);
-        int day = 0;
-        int month = 0;
-        int year = 0;
+        int day = 1;
+        int month = 1;
+        int year = 1970;
 
         System.out.print("Nhap ma so sinh vien: ");
         this.maSoSinhVien = kb.nextLine();
@@ -71,7 +74,8 @@ public class SinhVien
         System.out.print("Nhap ngay sinh: ");
         day = kb.nextInt();
         
-        // Date this.ngaySinh = new Date (year, month, day);
+        // this.ngaySinh = new Date (year, month, day);
+        this.ngaySinh = new Date(year, month, day);
         System.out.print("Nhap so hoc phan dang ky: ");
         this.soHocPhanDangKi = kb.nextInt();
         kb.nextLine();
@@ -88,9 +92,10 @@ public class SinhVien
     }
 
     public void hienThiThongTin () {
+        Date formatter = new Date();
         System.out.println("Id: " + this.maSoSinhVien);
         System.out.println("Hoten: " + this.hoTen);
-        System.out.println("Ngay sinh: " + this.ngaySinh);
+        System.out.println("Ngay sinh: " + ngaySinh.showDate(ngaySinh));
         System.out.println("So hoc phan da dang ky: " + this.soHocPhanDangKi);
         String hps = "{";
         for(int i = 0; i < soHocPhanDangKi; i++) {
@@ -128,6 +133,14 @@ public class SinhVien
 
     public String getName () {
         return this.hoTen;
+    }
+
+    public String getId() {
+        return this.maSoSinhVien;
+    }
+
+    public void hienThiTen () {
+        System.out.println("Ten: " + this.hoTen);
     }
 
     public double trungBinh () {
