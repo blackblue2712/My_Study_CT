@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.InputMismatchException;
+import java.io.*;
+
 // // import java.util.Date;
 // // import java.util.*;
 // import java.text.DateFormat;
@@ -60,35 +62,67 @@ public class SinhVien
         int month = 1;
         int year = 1970;
 
-        System.out.print("Nhap ma so sinh vien: ");
-        this.maSoSinhVien = kb.nextLine();
-        System.out.print("Nhap ho ten sinh vien: ");
-        this.hoTen = kb.nextLine();
+        try {
+            File log = new File("test.txt");
+            log.createNewFile();
+            FileWriter writer = new FileWriter(log, true);
+     
+            System.out.print("Nhap ma so sinh vien: ");
+            this.maSoSinhVien = kb.nextLine();
+            
 
-        System.out.print("Nhap nam sinh: ");
-        year = kb.nextInt();
+            System.out.print("Nhap ho ten sinh vien: ");
+            this.hoTen = kb.nextLine();
+            
 
-        System.out.print("Nhap thang sinh: ");
-        month = kb.nextInt();
+            System.out.print("Nhap nam sinh: ");
+            year = kb.nextInt();
 
-        System.out.print("Nhap ngay sinh: ");
-        day = kb.nextInt();
+            System.out.print("Nhap thang sinh: ");
+            month = kb.nextInt();
+
+            System.out.print("Nhap ngay sinh: ");
+            day = kb.nextInt();
+            
+            
+            // this.ngaySinh = new Date (year, month, day);
+            this.ngaySinh = new Date(year, month, day);
+            System.out.print("Nhap so hoc phan dang ky: ");
+            this.soHocPhanDangKi = kb.nextInt();
+            kb.nextLine();
+            for (int i = 0; i < this.soHocPhanDangKi; i++) {
+                System.out.print("Nhap mon thu " + (i+1) + ": ");
+                String hp = kb.nextLine();
+                this.hocPhan.add(hp);
+            }
+
+            for (int i = 0; i < this.soHocPhanDangKi; i++) {
+                System.out.print("Nhap diem mon thu " + (i+1) + ": ");
+                this.diemHocPhan.add(kb.nextLine());
+            }
+
+            writer.write(this.maSoSinhVien +"\n");
+            writer.write(this.hoTen + "\n");
+            writer.write("Ngay thang nam sinh: " + day + "/" + month + "/" + year + "\n");
+            for (int i = 0; i < this.soHocPhanDangKi; i++) {
+                writer.write("Hoc phan " + this.hocPhan.get(i) + " --- Diem: " + this.diemHocPhan.get(i) + "\n");
+            } 
+
+
+            writer.close();
+
+
+
+
+        } catch(FileNotFoundException e) {
+            System.out.println("ERROR - " + e);
+        } catch(UnsupportedEncodingException e) {
+            System.out.println("ERROR - " + e); 
+        }catch (IOException e) {
+
+        } 
+
         
-        // this.ngaySinh = new Date (year, month, day);
-        this.ngaySinh = new Date(year, month, day);
-        System.out.print("Nhap so hoc phan dang ky: ");
-        this.soHocPhanDangKi = kb.nextInt();
-        kb.nextLine();
-        for (int i = 0; i < this.soHocPhanDangKi; i++) {
-            System.out.print("Nhap mon thu " + (i+1) + ": ");
-            String hp = kb.nextLine();
-            this.hocPhan.add(hp);
-        }
-
-        for (int i = 0; i < this.soHocPhanDangKi; i++) {
-            System.out.print("Nhap diem mon thu " + (i+1) + ": ");
-            this.diemHocPhan.add(kb.nextLine());
-        }
     }
 
     public void hienThiThongTin () {
@@ -152,19 +186,19 @@ public class SinhVien
                     break;
                 case "D+":
                     sum += Dp;
-                    break; 
+                    break;
                 case "D":
                     sum += D;
-                    break; 
+                    break;
                 case "C":
                     sum += C;
-                    break; 
+                    break;
                 case "C+":
                     sum += Cp;
-                    break; 
+                    break;
                 case "B":
                     sum += B;
-                    break; 
+                    break;
                 case "B+":
                     sum += Bp;
                     break; 
@@ -179,4 +213,5 @@ public class SinhVien
         System.out.println("Diem trung binh: " + sum/this.diemHocPhan.size());
         return sum/this.diemHocPhan.size();
     }
+
 }

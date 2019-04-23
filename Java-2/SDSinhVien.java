@@ -2,20 +2,21 @@
 // import java.util.ArrayList;
 // import java.util.Collections;
 import java.util.*;
+import java.io.*;
 
 public class SDSinhVien 
 {
     public static void main (String args[]) {
         Scanner kb = new Scanner(System.in);
-        SinhVien sv = new SinhVien();
-        sv.nhapThongTin();
-        sv.hienThiThongTin();
-        sv.xoaHocPhan();
-        sv.hienThiThongTin();
-        sv.trungBinh();
+        // SinhVien sv = new SinhVien();
+        // sv.nhapThongTin();
+        // sv.hienThiThongTin();
+        // sv.xoaHocPhan();
+        // sv.hienThiThongTin();
+        // sv.trungBinh();
 
         ArrayList<SinhVien> array_sv = new ArrayList<SinhVien>();
-        array_sv.add(sv);
+        // array_sv.add(sv);
         int options = 1;
         while (options != 0) {
             System.out.println("1. Them sinh vien");
@@ -23,6 +24,7 @@ public class SDSinhVien
             System.out.println("3. Tim kiem sinh vien theo ma so sinh vien");
             System.out.println("4. Tim kiem sinh vien co diem trung binh lon nhat");
             System.out.println("5. Tim kiem sinh vien bi canh bao hoc vu");
+            System.out.println("6. Read from file");
             System.out.println("0. Exit");
             System.out.println("> ");
             options = kb.nextInt();
@@ -41,6 +43,9 @@ public class SDSinhVien
                     break;
                 case 5:
                     findMin (array_sv);
+                    break;
+                case 6:
+                    readFromFile ();
                     break;
                 default:
                     break;
@@ -108,6 +113,19 @@ public class SDSinhVien
             if ( sv.trungBinh() < 1 ) {
                 sv.hienThiTen();
             }
+        }
+    }
+
+    public static void readFromFile () {
+        String strFilename = "test.txt";
+        try {
+            BufferedReader in = new BufferedReader(new FileReader(strFilename));
+            String inLine;
+            while ((inLine = in.readLine()) != null) {
+                System.out.println(inLine);
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 }

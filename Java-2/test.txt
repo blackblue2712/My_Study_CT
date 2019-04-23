@@ -1,0 +1,5 @@
+b123123
+nghia
+Ngay thang nam sinh: 12/12/2222
+Hoc phan OOP --- Diem: A
+Hoc phan Eng --- Diem: B
